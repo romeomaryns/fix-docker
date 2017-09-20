@@ -1,0 +1,23 @@
+version: '3'
+services:
+  app:
+    build: .
+    image: romeomaryns/fix-docker
+    ports:
+      - "8080:8080"
+    depends_on:
+                - db
+                - rabbitmq
+  db:
+    image: postgres
+    env_file: .env-postgres
+    volumes:
+          - /c/psql-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
