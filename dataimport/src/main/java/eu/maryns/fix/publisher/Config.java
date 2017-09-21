@@ -1,3 +1,5 @@
+package eu.maryns.fix.publisher;
+
 import com.oanda.v20.account.AccountID;
 import com.oanda.v20.primitives.InstrumentName;
 
