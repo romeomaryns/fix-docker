@@ -1,13 +1,15 @@
 version: '3'
 services:
-  helloworld:
-    build: helloworld
-    image: romeomaryns/hello-world
-    ports:
-      - "8090:8080"
-    depends_on:
-                - db
-                - rabbitmq
+
+  config:
+    build: configserver
+    restart: always
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+
   db:
     image: postgres
     env_file: .env-postgres
@@ -18,10 +20,34 @@ services:
 
   rabbitmq:
     image: rabbitmq:management
+    restart: always
     ports:
       - "5672:5672"
       - "15672:15672"
+    logging:
+     options:
+       max-size: "10m"
+       max-file: "10"
 
+  eurekaserver:
+    build: eurekaserver
+    image: romeomaryns/eureka-server
+    restart: always
+    ports:
+         - "8761:8761"
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+  helloworld:
+    build: helloworld
+    image: romeomaryns/hello-world
+    ports:
+      - "8090:8080"
+    depends_on:
+                - db
+                - rabbitmq
 
   dataimport:
      build: dataimport

@@ -8,6 +8,7 @@ spring:
         output:
           destination: test
           contentType: text/plain
+          #contentType: application/json
 
 #Rabbitmq configuration
   rabbitmq:
