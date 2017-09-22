@@ -1,4 +1,4 @@
-package eu.maryns.fix.publisher;
+package eu.maryns.fix.source.event;
 
 import com.oanda.v20.account.AccountID;
 import com.oanda.v20.primitives.InstrumentName;

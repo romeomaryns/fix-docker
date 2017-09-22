@@ -9,6 +9,9 @@
     <version>0.1.0</version>
     <modules>
         <module>dataimport</module>
+        <module>helloworld</module>
+        <module>datalog</module>
+        <module>datatransform</module>
     </modules>
 
     <parent>

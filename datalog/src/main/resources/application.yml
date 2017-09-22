@@ -1,0 +1,15 @@
+server:
+  port: 8081
+spring:
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: xformed
+
+#Rabbitmq configuration
+  rabbitmq:
+    host: 192.168.99.100
+    port: 5672
+    username: guest
+    password: guest
