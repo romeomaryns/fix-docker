@@ -7,9 +7,9 @@ error:
 
 eureka:
   instance:
-    hostname: eureka-service
+    hostname: 192.168.99.100
   client:
     registerWithEureka: false
     fetchRegistry: false
-    service-url:
+    serviceUrl :
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
