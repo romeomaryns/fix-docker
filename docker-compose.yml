@@ -53,21 +53,21 @@ services:
                 - db
                 - rabbitmq
 
-  dataimport:
-     build: dataimport
+  data-import:
+     build: data-import
      image: romeomaryns/data-import
      depends_on:
                - config-service
                - rabbitmq
 
-  datalog:
-       build: datalog
+  data-log:
+       build: data-log
        image: romeomaryns/data-log
        depends_on:
-                 - datatransform
+                 - data-transform
 
-  datatransform:
-        build: datatransform
+  data-transform:
+        build: data-transform
         image: romeomaryns/data-transform
         depends_on:
-                  - dataimport
+                  - data-import
