@@ -12,8 +12,15 @@ spring:
 
 #Rabbitmq configuration
   rabbitmq:
-    #host: 192.168.99.100
-    host: localhost
+    host: 192.168.99.100
+    #host: localhost
     port: 5672
     username: guest
     password: guest
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.99.100:8761/eureka/
