@@ -2,6 +2,8 @@ server:
   port: 8081
 spring:
   cloud:
+    config:
+      name: data-transform
     stream:
       bindings:
         output:
@@ -15,3 +17,11 @@ spring:
     port: 5672
     username: guest
     password: guest
+
+eureka:
+  instance:
+    hostname: data-transform
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.99.100:8761/eureka/
