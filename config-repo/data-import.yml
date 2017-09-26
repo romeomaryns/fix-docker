@@ -3,6 +3,8 @@ server:
 fixedDelay: 5000
 spring:
   cloud:
+    config:
+      name: data-import
     stream:
       bindings:
         output:
@@ -18,8 +20,10 @@ spring:
     username: guest
     password: guest
 
+
 eureka:
   instance:
+    hostname: data-import
     prefer-ip-address: true
   client:
     serviceUrl:

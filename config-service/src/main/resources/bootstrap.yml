@@ -8,7 +8,7 @@ spring:
   cloud:
     config:
       enabled: true;
-      failfast: true:
+      failfast: true;
       server:
         git:
           uri:  https://github.com/romeomaryns/config-repo
