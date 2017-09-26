@@ -1,9 +1,9 @@
+server:
+  port: 8761
 spring:
   cloud:
     config:
       name: eureka-service
-server:
-  port: 8761
 
 eureka:
   instance:

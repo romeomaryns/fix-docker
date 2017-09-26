@@ -1,14 +1,19 @@
+server:
+  port: 8888
+
+
 spring:
   application:
     name: config-service
   cloud:
     config:
+      enabled: true;
+      failfast: true:
       server:
         git:
           uri:  https://github.com/romeomaryns/config-repo
+          username: romeomaryns
+          password: P0ns0nby
       monitor:
         github:
           enabled: true
-
-server:
-  port: 8888
