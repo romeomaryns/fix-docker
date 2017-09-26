@@ -1,5 +1,3 @@
-server:
-  port: 8081
 spring:
   cloud:
     config:
@@ -20,7 +18,6 @@ spring:
 
 eureka:
   instance:
-    hostname: data-transform
     prefer-ip-address: true
   client:
     serviceUrl:

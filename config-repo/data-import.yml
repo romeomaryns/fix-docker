@@ -1,5 +1,3 @@
-server:
-  port: 8080
 fixedDelay: 5000
 spring:
   cloud:
@@ -23,7 +21,6 @@ spring:
 
 eureka:
   instance:
-    hostname: data-import
     prefer-ip-address: true
   client:
     serviceUrl:
