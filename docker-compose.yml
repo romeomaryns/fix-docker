@@ -43,6 +43,9 @@ services:
       options:
         max-size: "10m"
         max-file: "10"
+    depends_on:
+      - config-service
+      - rabbitmq
 
   helloworld:
     build: helloworld
