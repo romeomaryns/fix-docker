@@ -18,7 +18,7 @@ services:
     env_file: .env-postgres
     restart: always
     volumes:
-          - ./data:/var/lib/postgresql/data
+          - /data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
 
@@ -43,9 +43,6 @@ services:
       options:
         max-size: "10m"
         max-file: "10"
-    depends_on:
-      - config-service
-      - rabbitmq
 
   helloworld:
     build: helloworld
@@ -56,21 +53,32 @@ services:
                 - db
                 - rabbitmq
 
-  data-import:
+
+  stream-price-service:
+     build: stream-price-service
+     image: romeomaryns/stream-price-service
+     depends_on:
+               - config-service
+               - rabbitmq
+               - db
+               - eureka-service
+
+
+  dataimport:
      build: data-import
      image: romeomaryns/data-import
      depends_on:
                - config-service
                - rabbitmq
 
-  data-log:
+  datalog:
        build: data-log
        image: romeomaryns/data-log
        depends_on:
-                 - data-transform
+                 - datatransform
 
-  data-transform:
+  datatransform:
         build: data-transform
         image: romeomaryns/data-transform
         depends_on:
-                  - data-import
+                  - dataimport

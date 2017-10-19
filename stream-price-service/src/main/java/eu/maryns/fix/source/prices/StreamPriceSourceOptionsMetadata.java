@@ -1,4 +1,4 @@
-package eu.maryns.fix.source.event;
+package eu.maryns.fix.source.prices;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -6,12 +6,8 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
 
 @ConfigurationProperties
-public class EventSourceOptionsMetadata {
+public class StreamPriceSourceOptionsMetadata {
 
-    /**
-     * 	how to render the current time, using SimpleDateFormat
-     */
-    private String format = "yyyy-MM-dd HH:mm:ss";
 
     /**
      * time delay between messages, expressed in TimeUnits (seconds by default)
@@ -31,7 +27,7 @@ public class EventSourceOptionsMetadata {
     /**
      * the maximum messages per poll; -1 for unlimited
      */
-    long maxMessages = 1;
+    long maxMessages = -1;
 
     public long getMaxMessages() {
         return this.maxMessages;
@@ -58,15 +54,6 @@ public class EventSourceOptionsMetadata {
 
     public void setTimeUnit(String timeUnit) {
         this.timeUnit = timeUnit.toUpperCase();
-    }
-
-    @DateFormat
-    public String getFormat() {
-        return this.format;
-    }
-
-    public void setFormat(String format) {
-        this.format = format;
     }
 
     public int getFixedDelay() {

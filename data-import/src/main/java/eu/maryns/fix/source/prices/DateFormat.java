@@ -1,4 +1,4 @@
-package eu.maryns.fix.source.event;
+package eu.maryns.fix.source.prices;
 
 import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.*;

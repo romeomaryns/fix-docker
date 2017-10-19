@@ -1,8 +1,8 @@
 spring:
   application:
-    name: eureka-service
+    name: stream-price-service
   cloud:
         config:
-          #uri: http://192.168.99.100:8888
+         # uri: http://192.168.99.100:8888
           #uri: http://localhost:8888
           uri: http://192.168.99.101:8888

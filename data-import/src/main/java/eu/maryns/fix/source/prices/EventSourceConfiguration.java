@@ -1,4 +1,4 @@
-package eu.maryns.fix.source.event;
+package eu.maryns.fix.source.prices;
 
 
 import org.springframework.amqp.core.TopicExchange;
