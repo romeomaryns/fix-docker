@@ -1,0 +1,20 @@
+spring:
+  cloud:
+    config:
+      name: persist-service
+    stream:
+      bindings:
+        input:
+          destination: prices
+  datasource:
+    url:  jdbc:postgresql://192.168.99.100:5432/docker
+    username: docker
+    password: docker
+    testWhileIdle: true;
+    validationQuery: SELECT 1
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+      dialect: org.hibernate.dialect.PostgreSQLDialect

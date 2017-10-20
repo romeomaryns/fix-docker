@@ -1,10 +1,9 @@
 version: '3'
 services:
-
   config-service:
     build: config-service
     image: romeomaryns/config-service
-  #  restart: always
+    restart: always
     ports:
       - "8888:8888"
     logging:
@@ -36,23 +35,13 @@ services:
   eureka-service:
     build: eureka-service
     image: romeomaryns/eureka-service
-  #  restart: always
+    restart: always
     ports:
          - "8761:8761"
     logging:
       options:
         max-size: "10m"
         max-file: "10"
-
-
-  helloworld:
-    build: helloworld
-    image: romeomaryns/hello-world
-    ports:
-      - "8090:8080"
-    depends_on:
-                - db
-                - rabbitmq
 
   stream-price-service:
      build: stream-price-service
@@ -61,11 +50,18 @@ services:
                - config-service
                - rabbitmq
                - eureka-service
+  log-service:
+    build: log-service
+    image: romeomaryns/log-service
+    depends_on:
+              - config-service
+              - rabbitmq
+              - eureka-service
 
-   log-service:
-        build: log-service
-        image: romeomaryns/log-service
-        depends_on:
-                  - config-service
-                  - rabbitmq
-                  - eureka-service
+  persist-service:
+      build: persist-service
+      image: romeomaryns/persist-service
+      depends_on:
+                - config-service
+                - rabbitmq
+                - eureka-service
