@@ -17,7 +17,7 @@ public class StreamPriceSourceOptionsMetadata {
     /**
      * an initial delay when using a fixed delay trigger, expressed in TimeUnits (seconds by default)
      */
-    private int initialDelay = 0;
+    private int initialDelay = 10;
 
     /**
      * the time unit for the fixed and initial delays

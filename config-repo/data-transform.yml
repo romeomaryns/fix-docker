@@ -8,21 +8,3 @@ spring:
           destination: xformed
         input:
           destination: test
-
-#Rabbitmq configuration
-  rabbitmq:
-      # hostname: 192.168.99.100
-        hostname: 192.168.99.101
-      #  hostname: localhost
-    port: 5672
-    username: guest
-    password: guest
-
-eureka:
-  instance:
-    prefer-ip-address: true
-  client:
-    serviceUrl:
-      #defaultZone: http://192.168.99.100:8761/eureka/
-      #defaultZone: http://localhost:8761/eureka/
-      defaultZone: http://192.168.99.101:8761/eureka/

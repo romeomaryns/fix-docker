@@ -8,13 +8,10 @@
     <packaging>pom</packaging>
     <version>0.1.0</version>
     <modules>
-        <module>data-import</module>
-        <module>helloworld</module>
-        <module>data-log</module>
-        <module>data-transform</module>
         <module>eureka-service</module>
         <module>config-service</module>
         <module>stream-price-service</module>
+        <module>log-service</module>
     </modules>
 
     <properties>

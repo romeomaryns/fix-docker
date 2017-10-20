@@ -44,6 +44,7 @@ services:
         max-size: "10m"
         max-file: "10"
 
+
   helloworld:
     build: helloworld
     image: romeomaryns/hello-world
@@ -53,32 +54,18 @@ services:
                 - db
                 - rabbitmq
 
-
   stream-price-service:
      build: stream-price-service
      image: romeomaryns/stream-price-service
      depends_on:
                - config-service
                - rabbitmq
-               - db
                - eureka-service
 
-
-  dataimport:
-     build: data-import
-     image: romeomaryns/data-import
-     depends_on:
-               - config-service
-               - rabbitmq
-
-  datalog:
-       build: data-log
-       image: romeomaryns/data-log
-       depends_on:
-                 - datatransform
-
-  datatransform:
-        build: data-transform
-        image: romeomaryns/data-transform
+   log-service:
+        build: log-service
+        image: romeomaryns/log-service
         depends_on:
-                  - dataimport
+                  - config-service
+                  - rabbitmq
+                  - eureka-service

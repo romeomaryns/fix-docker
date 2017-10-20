@@ -31,7 +31,7 @@ public class StreamPriceSource {
 
     @Bean
     @InboundChannelAdapter(value = Source.OUTPUT)
-    public MessageSource<Price> send() {
+    public MessageSource<List<Price>> send() {
             System.out.println("Sending message...");
         Context ctx = new Context(Config.URL, Config.TOKEN);
         AccountID accountId = Config.ACCOUNTID;
@@ -48,12 +48,12 @@ public class StreamPriceSource {
         } catch (ExecuteException e) {
             e.printStackTrace();
         }
-
+        ArrayList<Price> prices = new ArrayList<Price>();
         for (Price price : resp.getPrices()) {
                     System.out.println(price.getTime().toString() + price.getInstrument().toString());
-                    return () -> new GenericMessage<>(price);
+                    prices.add(price);
                 }
-        return null;
+        return () -> new GenericMessage<List<Price>>(prices);
     }
 
 }

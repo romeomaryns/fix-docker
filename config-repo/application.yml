@@ -1,0 +1,21 @@
+logging:
+  level:
+    org.springframework.security: INFO
+
+eureka:
+  instance:
+    prefer-ip-address: false
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.99.100:8761/eureka/
+spring:
+  cloud:
+      stream:
+        defaultBinder: rabbit
+  rabbitmq:
+        host: 192.168.99.100
+         #hostname: 192.168.99.101
+         #hostname: localhost
+        port: 5672
+        username: guest
+        password: guest
