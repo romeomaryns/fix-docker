@@ -13,7 +13,7 @@ public class StreamPriceSourceConfiguration {
 
     @Bean
     public TopicExchange senderTopicExchange() {
-        return new TopicExchange("prices");
+        return new TopicExchange("log");
     }
 
 

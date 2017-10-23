@@ -43,6 +43,17 @@ services:
         max-size: "10m"
         max-file: "10"
 
+  zuul-service:
+    build: zuul-service
+    image: romeomaryns/zuul-service
+    restart: always
+    ports:
+         - "8765:8765"
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
   stream-price-service:
      build: stream-price-service
      image: romeomaryns/stream-price-service
@@ -65,3 +76,21 @@ services:
                 - config-service
                 - rabbitmq
                 - eureka-service
+
+  price-service:
+        build: price-service
+        image: romeomaryns/price-service
+        ports:
+             - "8080:8080"
+        depends_on:
+                  - config-service
+                  - rabbitmq
+                  - eureka-service
+
+  instrument-service:
+          build: instrument-service
+          image: romeomaryns/instrument-service
+          depends_on:
+                    - config-service
+                    - rabbitmq
+                    - eureka-service

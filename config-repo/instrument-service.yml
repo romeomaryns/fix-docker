@@ -1,0 +1,12 @@
+server:
+  port: 8081
+spring:
+  cloud:
+    config:
+      name: instrument-service
+    stream:
+      bindings:
+        output:
+          destination: instruments
+          #contentType: text/plain
+          contentType: application/json

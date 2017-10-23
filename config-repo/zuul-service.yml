@@ -1,0 +1,11 @@
+server:
+  port: 8765
+spring:
+  cloud:
+    config:
+      name: zuul-service
+zuul:
+ routes:
+   zuul-service: /self/**
+   price-service: /prices/**
+   instrument-service: /instruments/**

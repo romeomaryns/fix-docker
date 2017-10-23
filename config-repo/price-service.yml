@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    config:
+      name: price-service
+    stream:
+      bindings:
+        output:
+          destination: log
+          #contentType: text/plain
+          contentType: application/json

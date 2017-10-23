@@ -8,9 +8,16 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.util.List;
-
+/*
 @RepositoryRestResource(collectionResourceRel = "prices", path = "prices")
-public interface PriceRepository extends PagingAndSortingRepository<Price, String> {
-    List<Price> findByTime(@Param("time")DateTime time);
-    List<Instrument> findByInstrument(@Param("instrument")Instrument instrument);
+public interface PriceRepository extends PagingAndSortingRepository<PriceJSON, String> {
+    List<PriceJSON> findByTime(@Param("time")String time);
+    List<PriceJSON> findByInstrument(@Param("instrument")String instrument);
+
+    @Override
+    <S extends PriceJSON> S save(S entity);
+}
+*/
+
+public class PriceRepository{
 }
