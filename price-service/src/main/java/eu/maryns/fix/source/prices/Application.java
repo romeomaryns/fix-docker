@@ -17,7 +17,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
+import org.springframework.cloud.sleuth.sampler.AlwaysSampler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -37,8 +40,16 @@ import java.util.List;
 
 @ComponentScan(value = "eu.maryns.fix.source.prices")
 @SpringBootApplication
-@EnableDiscoveryClient
+@EnableEurekaClient
+@EnableHystrix
+@EnableCircuitBreaker
+@EnableFeignClients
 public class Application extends RepositoryRestConfigurerAdapter {
+
+    @Bean
+    public AlwaysSampler defaultSampler() {
+        return new AlwaysSampler();
+    }
 
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
@@ -59,14 +70,14 @@ public class Application extends RepositoryRestConfigurerAdapter {
         PriceRepository repository;
 
 
-        @RequestMapping("/prices")
+        @RequestMapping("/")
         @ResponseBody
         List<Price> getPrices() {
             Page<Price> all = repository.findAll(new PageRequest(0, 10));
             return all.getContent();
         }
 
-        @RequestMapping("/prices/load")
+        @RequestMapping("/load")
         @ResponseBody
         List<Price> loadPrices() {
             Context ctx = new Context(Config.URL, Config.TOKEN);

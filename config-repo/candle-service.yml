@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    config:
+      name: candle-service
+    stream:
+      bindings:
+        output:
+          destination: candles
+          #contentType: text/plain
+          contentType: application/json

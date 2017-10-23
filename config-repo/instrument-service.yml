@@ -1,5 +1,3 @@
-server:
-  port: 8081
 spring:
   cloud:
     config:
@@ -10,3 +8,6 @@ spring:
           destination: instruments
           #contentType: text/plain
           contentType: application/json
+ribbon:
+  eureka:
+    enabled: true

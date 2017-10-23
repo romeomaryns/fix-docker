@@ -11,6 +11,27 @@ services:
         max-size: "10m"
         max-file: "10"
 
+  elasticsearch:
+    image: elasticsearch
+    restart: always
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+
+  kibana:
+    image: kibana
+    restart: always
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+
+  zipkin-service:
+    build: zipkin-service
+    image: romeomaryns/zipkin-service
+    restart: always
+    ports:
+      - "9411:9411"
 
   db:
     image: postgres
@@ -48,7 +69,7 @@ services:
     image: romeomaryns/zuul-service
     restart: always
     ports:
-         - "8765:8765"
+         - "80:80"
     logging:
       options:
         max-size: "10m"
@@ -80,8 +101,6 @@ services:
   price-service:
         build: price-service
         image: romeomaryns/price-service
-        ports:
-             - "8080:8080"
         depends_on:
                   - config-service
                   - rabbitmq
@@ -94,3 +113,10 @@ services:
                     - config-service
                     - rabbitmq
                     - eureka-service
+  candle-service:
+            build: candle-service
+            image: romeomaryns/candle-service
+            depends_on:
+                      - config-service
+                      - rabbitmq
+                      - eureka-service

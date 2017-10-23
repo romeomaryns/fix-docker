@@ -8,3 +8,6 @@ spring:
           destination: log
           #contentType: text/plain
           contentType: application/json
+ribbon:
+  eureka:
+    enabled: true

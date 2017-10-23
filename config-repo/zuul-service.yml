@@ -1,5 +1,5 @@
 server:
-  port: 8765
+  port: 80
 spring:
   cloud:
     config:
@@ -9,3 +9,4 @@ zuul:
    zuul-service: /self/**
    price-service: /prices/**
    instrument-service: /instruments/**
+   candle-service: /candles/**
