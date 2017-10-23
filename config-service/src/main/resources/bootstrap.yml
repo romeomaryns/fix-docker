@@ -5,8 +5,8 @@ spring:
     name: config-service
   cloud:
     config:
-      enabled: true;
-      failfast: true;
+      enabled: true
+      failfast: true
       server:
         git:
           uri:  https://github.com/romeomaryns/config-repo
@@ -15,3 +15,17 @@ spring:
       monitor:
         github:
           enabled: true
+      stream:
+        defaultBinder: rabbit
+  zipkin:
+    locator:
+      discovery:
+        enabled: false
+  rabbitmq:
+        host: 192.168.99.100
+         #hostname: 192.168.99.101
+         #hostname: localhost
+        port: 5672
+        username: guest
+        password: guest
+

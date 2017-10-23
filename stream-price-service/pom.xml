@@ -11,4 +11,10 @@
 
     <artifactId>stream-price-service</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-sleuth-stream</artifactId>
+        </dependency>
+    </dependencies>
 </project>
