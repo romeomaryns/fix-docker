@@ -7,7 +7,6 @@ import com.oanda.v20.account.AccountID;
 import com.oanda.v20.pricing.Price;
 import com.oanda.v20.pricing.PricingGetRequest;
 import com.oanda.v20.pricing.PricingGetResponse;
-import com.oanda.v20.primitives.DateTime;
 import org.springframework.amqp.core.TopicExchange;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.cloud.stream.annotation.EnableBinding;

@@ -1,8 +1,0 @@
-spring:
-  cloud:
-    config:
-      name: persist-service
-    stream:
-      bindings:
-        input:
-          destination: prices
