@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 public class InstrumentCommission {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
 
     private String instrument;

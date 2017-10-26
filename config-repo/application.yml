@@ -4,8 +4,9 @@ logging:
 
 eureka:
   instance:
-    prefer-ip-address: true
+    prefer-ip-address: false
   client:
+    fetchRegistry: true
     serviceUrl:
       defaultZone: http://192.168.99.100:8761/eureka/
 spring:
@@ -38,8 +39,3 @@ endpoints:
     enabled: true
   health:
     sensitive: false
-ribbon:
-  eureka:
-    enabled: false
-hystrix:
-  enabled: false

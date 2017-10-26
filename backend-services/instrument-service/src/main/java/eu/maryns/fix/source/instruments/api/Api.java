@@ -4,7 +4,7 @@ import com.oanda.v20.Context;
 import com.oanda.v20.account.AccountID;
 import com.oanda.v20.account.AccountInstrumentsRequest;
 import com.oanda.v20.account.AccountInstrumentsResponse;
-import eu.maryns.fix.source.instruments.Config;
+import eu.maryns.fix.source.instruments.config.Config;
 import eu.maryns.fix.source.instruments.model.Instrument;
 import eu.maryns.fix.source.instruments.repository.InstrumentRepository;
 import org.slf4j.Logger;
@@ -34,7 +34,11 @@ public class Api {
 
     public Api() {
         instruments = new ArrayList<>();
-        instruments.addAll((Collection<? extends Instrument>) repository.findAll());
+        try {
+            instruments.addAll((Collection<? extends Instrument>) repository.findAll());
+        }catch (Exception e){
+            System.out.println("failed to fill instrument collection on startup.. " +e.getMessage());
+        }
     }
 
 

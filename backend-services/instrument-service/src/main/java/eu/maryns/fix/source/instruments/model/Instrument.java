@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 public class Instrument implements Serializable{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
 
     private String name;
@@ -27,6 +27,9 @@ public class Instrument implements Serializable{
     private BigDecimal maximumPositionSize;
     private BigDecimal maximumOrderUnits;
     private BigDecimal marginRate;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="commision_fk")
     private InstrumentCommission commission;
 
 
