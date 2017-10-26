@@ -84,7 +84,7 @@ public class Api {
     }
 
     @RequestMapping("/{name}")
-    public Instrument findByNumber(@PathVariable("name") String name) {
+    public Instrument findByName(@PathVariable("name") String name) {
         logger.info(String.format("Instrument.findByName(%s)", name));
         Instrument a = instruments.stream().filter(it -> it.getName().equals(name)).findFirst().get();
         logger.info(String.format("Instrument.findByName: %s", a));

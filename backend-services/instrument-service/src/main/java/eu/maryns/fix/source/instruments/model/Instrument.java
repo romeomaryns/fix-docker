@@ -1,40 +1,33 @@
 package eu.maryns.fix.source.instruments.model;
 
-import com.google.gson.annotations.SerializedName;
-import com.oanda.v20.pricing.PriceBucket;
-import com.oanda.v20.primitives.DecimalNumber;
-import com.oanda.v20.primitives.InstrumentCommission;
-import com.oanda.v20.primitives.InstrumentName;
-import com.oanda.v20.primitives.InstrumentType;
+
 import lombok.Data;
-import lombok.Generated;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 
 @Data
 @Entity
 public class Instrument implements Serializable{
 
     @Id
-    @Generated
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
     private String name;
-    private String type;
+    private InstrumentType type;
     private String displayName;
-    private Float pipLocation;
-    private Float displayPrecision;
-    private Float tradeUnitsPrecision;
+    private Integer pipLocation;
+    private Integer displayPrecision;
+    private Integer tradeUnitsPrecision;
     private BigDecimal minimumTradeSize;
     private BigDecimal maximumTrailingStopDistance;
     private BigDecimal minimumTrailingStopDistance;
     private BigDecimal maximumPositionSize;
     private BigDecimal maximumOrderUnits;
     private BigDecimal marginRate;
-    private BigDecimal commission;
+    private InstrumentCommission commission;
 
 
     protected Instrument() {
@@ -53,19 +46,31 @@ public class Instrument implements Serializable{
         this.commission=null;
     }
 
-    public Instrument(com.oanda.v20.primitives.Instrument instrument) {
-        this.id = instrument.getDisplayName()+instrument.getType().name()+instrument.getTradeUnitsPrecision();
-        this.type=((instrument.getType() == null) ? "N/A" : instrument.getType().name());
-        this.displayName=((instrument.getDisplayName() == null) ? "N/A" : instrument.getDisplayName());
-        this.pipLocation=((instrument.getPipLocation() == null) ? new Float(0) : instrument.getPipLocation().floatValue());
-        this.displayPrecision=((instrument.getDisplayPrecision() == null) ? new Float(0) : instrument.getDisplayPrecision().floatValue());
-        this.tradeUnitsPrecision=((instrument.getTradeUnitsPrecision() == null) ? new Float(0) : instrument.getTradeUnitsPrecision().floatValue());
-        this.minimumTradeSize=((instrument.getMinimumTradeSize() == null) ? new BigDecimal(0) : instrument.getMinimumTradeSize().bigDecimalValue());
-        this.maximumTrailingStopDistance=((instrument.getMaximumTrailingStopDistance() == null) ? new BigDecimal(0) : instrument.getMaximumTrailingStopDistance().bigDecimalValue());
-        this.minimumTrailingStopDistance=((instrument.getMinimumTrailingStopDistance() == null) ? new BigDecimal(0) : instrument.getMinimumTrailingStopDistance().bigDecimalValue());
-        this.maximumPositionSize=((instrument.getMaximumPositionSize() == null) ? new BigDecimal(0) : instrument.getMaximumPositionSize().bigDecimalValue());
-        this.maximumOrderUnits=((instrument.getMaximumOrderUnits() == null) ? new BigDecimal(0) : instrument.getMaximumOrderUnits().bigDecimalValue());
-        this.marginRate=((instrument.getMarginRate() == null) ? new BigDecimal(0) : instrument.getMarginRate().bigDecimalValue());
-        this.commission=((instrument.getCommission() == null) ? new BigDecimal(0) : instrument.getCommission().getCommission().bigDecimalValue());
+    public Instrument(com.oanda.v20.primitives.Instrument other) {
+        this.name = other.getName().toString();
+        this.type = InstrumentType.valueOf(other.getType().name());
+        this.displayName = other.getDisplayName();
+        if (other.getPipLocation() != null)
+        {
+            this.pipLocation = new Integer(other.getPipLocation());
+        }
+        if (other.getDisplayPrecision() != null)
+        {
+            this.displayPrecision = new Integer(other.getDisplayPrecision());
+        }
+        if (other.getTradeUnitsPrecision() != null)
+        {
+            this.tradeUnitsPrecision = new Integer(other.getTradeUnitsPrecision());
+        }
+        this.minimumTradeSize = other.getMinimumTradeSize().bigDecimalValue();
+        this.maximumTrailingStopDistance = other.getMaximumTrailingStopDistance().bigDecimalValue();
+        this.minimumTrailingStopDistance = other.getMinimumTrailingStopDistance().bigDecimalValue();
+        this.maximumPositionSize = other.getMaximumPositionSize().bigDecimalValue();
+        this.maximumOrderUnits = other.getMaximumOrderUnits().bigDecimalValue();
+        this.marginRate = other.getMarginRate().bigDecimalValue();
+        if (other.getCommission() != null)
+        {
+            this.commission = new InstrumentCommission(other.getCommission());
+        }
     }
 }
