@@ -1,23 +1,11 @@
 version: '3'
 services:
-  config-service:
-    build: config-service
-    image: romeomaryns/config-service
-    restart: always
-    ports:
-      - "8888:8888"
-    logging:
-      options:
-        max-size: "10m"
-        max-file: "10"
-
   elasticsearch:
     image: elasticsearch
     restart: always
     ports:
       - "9200:9200"
       - "9300:9300"
-
   kibana:
     image: kibana
     #env_file: .env-kibana
@@ -26,14 +14,6 @@ services:
       - "5601:5601"
     depends_on:
       - elasticsearch
-
-  zipkin-service:
-    build: zipkin-service
-    image: romeomaryns/zipkin-service
-    restart: always
-    ports:
-      - "9411:9411"
-
   db:
     image: postgres
     env_file: .env-postgres
@@ -42,7 +22,6 @@ services:
           - /data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
-
   rabbitmq:
     image: rabbitmq:management
     restart: always
@@ -54,8 +33,18 @@ services:
        max-size: "10m"
        max-file: "10"
 
+  config-service:
+    build: basic-services/config-service
+    image: romeomaryns/config-service
+    restart: always
+    ports:
+      - "8888:8888"
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
   eureka-service:
-    build: eureka-service
+    build: basic-services/eureka-service
     image: romeomaryns/eureka-service
     restart: always
     ports:
@@ -64,9 +53,8 @@ services:
       options:
         max-size: "10m"
         max-file: "10"
-
   zuul-service:
-    build: zuul-service
+    build: basic-services/zuul-service
     image: romeomaryns/zuul-service
     restart: always
     ports:
@@ -75,41 +63,45 @@ services:
       options:
         max-size: "10m"
         max-file: "10"
+  zipkin-service:
+      build: basic-services/zipkin-service
+      image: romeomaryns/zipkin-service
+      restart: always
+      ports:
+        - "9411:9411"
 
   stream-price-service:
-     build: stream-price-service
+     build: backend-services/stream-price-service
      image: romeomaryns/stream-price-service
      depends_on:
                - config-service
                - rabbitmq
                - eureka-service
   log-service:
-    build: log-service
+    build: backend-services/log-service
     image: romeomaryns/log-service
     depends_on:
               - config-service
               - rabbitmq
               - eureka-service
-
   price-service:
-        build: price-service
-        image: romeomaryns/price-service
-        depends_on:
-                  - config-service
-                  - rabbitmq
-                  - eureka-service
-
+    build: backend-services/price-service
+    image: romeomaryns/price-service
+    depends_on:
+              - config-service
+              - rabbitmq
+              - eureka-service
   instrument-service:
-          build: instrument-service
-          image: romeomaryns/instrument-service
-          depends_on:
-                    - config-service
-                    - rabbitmq
-                    - eureka-service
+    build: backend-services/instrument-service
+    image: romeomaryns/instrument-service
+    depends_on:
+              - config-service
+              - rabbitmq
+              - eureka-service
   candle-service:
-            build: candle-service
-            image: romeomaryns/candle-service
-            depends_on:
-                      - config-service
-                      - rabbitmq
-                      - eureka-service
+    build: backend-services/candle-service
+    image: romeomaryns/candle-service
+    depends_on:
+              - config-service
+              - rabbitmq
+              - eureka-service

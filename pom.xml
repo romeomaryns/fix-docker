@@ -8,15 +8,8 @@
     <packaging>pom</packaging>
     <version>0.1.0</version>
     <modules>
-        <module>eureka-service</module>
-        <module>config-service</module>
-        <module>stream-price-service</module>
-        <module>log-service</module>
-        <module>price-service</module>
-        <module>zuul-service</module>
-        <module>instrument-service</module>
-        <module>candle-service</module>
-        <module>zipkin-service</module>
+        <module>basic-services</module>
+        <module>backend-services</module>
     </modules>
 
     <parent>

@@ -1,0 +1,21 @@
+<entries>
+    <entry>cd Documents/Sync/applicaties/fix-docker</entry>
+    <entry>docker-compose up -d db rabbitmq elasticsearch kibana</entry>
+
+    <entry>mvn --projects :config-service,:eureka-service,:zuul-service,:zipkin-service --also-make clean package && docker-compose up -d config-service eureka-service zuul-service zipkin-service</entry>
+
+    <entry>mvn --projects :config-service --also-make clean package && docker-compose build config-service && docker-compose up -d config-service</entry>
+    <entry>mvn --projects :eureka-service --also-make clean package && docker-compose build eureka-service && docker-compose up -d eureka-service</entry>
+    <entry>mvn --projects :zuul-service --also-make clean package && docker-compose build zuul-service && docker-compose up -d zuul-service</entry>
+    <entry>mvn --projects :zipkin-service --also-make clean package && docker-compose build zipkin-service && docker-compose up -d zipkin-service</entry>
+
+
+    <entry>mvn --projects :candle-service,:instrument-service,:log-service,:price-service,:stream-price-service --also-make clean package && docker-compose up -d candle-service instrument-service log-service price-service stream-price-service</entry>
+
+    <entry>mvn --projects :candle-service --also-make clean package && docker-compose build candle-service && docker-compose up -d candle-service</entry>
+    <entry>mvn --projects :instrument-service --also-make clean package && docker-compose build instrument-service && docker-compose up -d instrument-service</entry>
+    <entry>mvn --projects :log-service --also-make clean package && docker-compose build log-service && docker-compose up -d log-service</entry>
+    <entry>mvn --projects :price-service --also-make clean package && docker-compose build price-service && docker-compose up -d price-service</entry>
+    <entry>mvn --projects :stream-price-service --also-make clean package && docker-compose build stream-price-service && docker-compose up -d stream-price-service</entry>
+
+</entries>
