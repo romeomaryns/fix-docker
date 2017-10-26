@@ -8,6 +8,3 @@ spring:
           destination: instruments
           #contentType: text/plain
           contentType: application/json
-ribbon:
-  eureka:
-    enabled: true

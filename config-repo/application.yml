@@ -1,7 +1,6 @@
 logging:
   level:
     org.springframework.security: INFO
-
 eureka:
   instance:
     prefer-ip-address: false
@@ -39,3 +38,4 @@ endpoints:
     enabled: true
   health:
     sensitive: false
+ribbon.eureka.enabled: false

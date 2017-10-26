@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 
 @Configuration
-@ComponentScan("eu.maryns.fix.source.instruments.model")
+@ComponentScan("eu.maryns.fix.source.instruments")
 public class InstrumentConfiguration {
 
     @Bean
