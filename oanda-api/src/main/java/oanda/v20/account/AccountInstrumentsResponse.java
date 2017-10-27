@@ -21,14 +21,14 @@ public class AccountInstrumentsResponse {
     private AccountInstrumentsResponse() {
     }
 
-    @SerializedName("instruments") private ArrayList<Instrument> instruments;
+    @SerializedName("candles") private ArrayList<Instrument> instruments;
 
     /**
-     * Get the instruments
+     * Get the candles
      * <p>
-     * The requested list of instruments.
+     * The requested list of candles.
      * <p>
-     * @return the instruments
+     * @return the candles
      * @see Instrument
      */
     public List<Instrument> getInstruments() {

@@ -40,16 +40,16 @@ public class PricingGetRequest extends Request {
                 );
             }
         });
-        this.setQueryParam("instruments", newInstruments);
+        this.setQueryParam("candles", newInstruments);
 
     }
 
     /**
-     * Set the instruments
+     * Set the candles
      * <p>
      * List of Instruments to get pricing for.
      * <p>
-     * @param instruments the instruments
+     * @param instruments the candles
      * @return {@link PricingGetRequest PricingGetRequest}
      * @see InstrumentName
      */
@@ -71,7 +71,7 @@ public class PricingGetRequest extends Request {
                 );
             }
         });
-        this.queryParams.put("instruments", newInstruments);
+        this.queryParams.put("candles", newInstruments);
         return this;
     }
 

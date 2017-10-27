@@ -127,8 +127,8 @@ public class AccountContext {
     /**
      * Account Instruments
      * <p>
-     * Get the list of tradeable instruments for the given Account. The list of
-     *     tradeable instruments is dependent on the regulatory division that
+     * Get the list of tradeable candles for the given Account. The list of
+     *     tradeable candles is dependent on the regulatory division that
      *     the Account is located in, thus should be the same for all Accounts
      *     owned by a single user.
      * <p>
@@ -150,8 +150,8 @@ public class AccountContext {
     /**
      * Account Instruments
      * <p>
-     * Get the list of tradeable instruments for the given Account. The list of
-     *     tradeable instruments is dependent on the regulatory division that
+     * Get the list of tradeable candles for the given Account. The list of
+     *     tradeable candles is dependent on the regulatory division that
      *     the Account is located in, thus should be the same for all Accounts
      *     owned by a single user.
      * <p>
@@ -172,7 +172,7 @@ public class AccountContext {
 
         return (AccountInstrumentsResponse) ctx.execute(
             "GET",
-            "/v3/accounts/{accountID}/instruments",
+            "/v3/accounts/{accountID}/candles",
             request,
             instrumentsResponseMap
         );

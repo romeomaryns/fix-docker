@@ -10,4 +10,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>candle-service</artifactId>
+
+   <dependencies>
+       <dependency>
+           <groupId>eu.maryns</groupId>
+           <artifactId>instrument-service</artifactId>
+           <version>0.1.0</version>
+       </dependency>
+   </dependencies>
 </project>

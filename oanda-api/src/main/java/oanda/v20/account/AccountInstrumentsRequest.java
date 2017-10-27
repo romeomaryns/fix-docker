@@ -24,11 +24,11 @@ public class AccountInstrumentsRequest extends Request {
     }
 
     /**
-     * Set the instruments
+     * Set the candles
      * <p>
-     * List of instruments to query specifically.
+     * List of candles to query specifically.
      * <p>
-     * @param instruments the instruments
+     * @param instruments the candles
      * @return {@link AccountInstrumentsRequest AccountInstrumentsRequest}
      * @see InstrumentName
      */
@@ -50,7 +50,7 @@ public class AccountInstrumentsRequest extends Request {
                 );
             }
         });
-        this.queryParams.put("instruments", newInstruments);
+        this.queryParams.put("candles", newInstruments);
         return this;
     }
 }

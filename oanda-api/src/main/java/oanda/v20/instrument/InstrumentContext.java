@@ -65,7 +65,7 @@ public class InstrumentContext {
 
         return (InstrumentCandlesResponse) ctx.execute(
             "GET",
-            "/v3/instruments/{instrument}/candles",
+            "/v3/candles/{instrument}/candles",
             request,
             candlesResponseMap
         );

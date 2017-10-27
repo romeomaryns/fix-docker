@@ -5,8 +5,13 @@ spring:
     config:
       name: zuul-service
 zuul:
- routes:
-   zuul-service: /self/**
-   price-service: /prices/**
-   instrument-service: /instruments/**
-   candle-service: /candles/**
+  routes:
+    price-service:
+      path: /prices/**
+      url: http://192.168.99.100/prices/
+    instrument-service:
+      path: /instruments/**
+      url: http://192.168.99.100:25000/instruments/
+    candle-service:
+      path: /candles/**
+      url: http://192.168.99.100:25001/candles/

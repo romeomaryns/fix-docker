@@ -1,3 +1,5 @@
+server:
+  port: 25000
 spring:
   cloud:
     config:
@@ -8,3 +10,4 @@ spring:
           destination: instruments
           #contentType: text/plain
           contentType: application/json
+

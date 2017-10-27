@@ -98,6 +98,8 @@ services:
               - config-service
               - rabbitmq
               - eureka-service
+    ports:
+      - "25000:25000"
   candle-service:
     build: backend-services/candle-service
     image: romeomaryns/candle-service
@@ -105,3 +107,5 @@ services:
               - config-service
               - rabbitmq
               - eureka-service
+    ports:
+      - "25001:25001"

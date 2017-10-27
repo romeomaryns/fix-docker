@@ -1,4 +1,4 @@
-package eu.maryns.fix.source.instruments;
+package eu.maryns.fix.source.candles.config;
 
 import com.oanda.v20.account.AccountID;
 import com.oanda.v20.primitives.InstrumentName;

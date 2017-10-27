@@ -4,19 +4,24 @@ package eu.maryns.fix.source.instruments.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Data
 @Entity
+@Table(uniqueConstraints={@UniqueConstraint(columnNames = {"name" , "displayName"})})
 public class Instrument implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    private Long id;
 
+    @NotNull
     private String name;
+    @NotNull
     private InstrumentType type;
+    @NotNull
     private String displayName;
     private Integer pipLocation;
     private Integer displayPrecision;

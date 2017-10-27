@@ -9,8 +9,8 @@ import oanda.v20.trade.TradeID;
 /**
  * A DelayedTradeClosure Transaction is created administratively to indicate
  * open trades that should have been closed but weren't because the open
- * trades' instruments were untradeable at the time. Open trades listed in this
- * transaction will be closed once their respective instruments become
+ * trades' candles were untradeable at the time. Open trades listed in this
+ * transaction will be closed once their respective candles become
  * tradeable.
  * <p>
  * Delayed Trade Closure
@@ -354,7 +354,7 @@ public class DelayedTradeClosureTransaction implements Transaction {
      * Get the Trade ID's
      * <p>
      * List of Trade ID's identifying the open trades that will be closed when
-     * their respective instruments become tradeable
+     * their respective candles become tradeable
      * <p>
      * @return the Trade ID's
      * @see TradeID
@@ -367,7 +367,7 @@ public class DelayedTradeClosureTransaction implements Transaction {
      * Set the Trade ID's
      * <p>
      * List of Trade ID's identifying the open trades that will be closed when
-     * their respective instruments become tradeable
+     * their respective candles become tradeable
      * <p>
      * @param tradeIDs the Trade ID's as a TradeID
      * @return {@link DelayedTradeClosureTransaction
@@ -382,7 +382,7 @@ public class DelayedTradeClosureTransaction implements Transaction {
      * Set the Trade ID's
      * <p>
      * List of Trade ID's identifying the open trades that will be closed when
-     * their respective instruments become tradeable
+     * their respective candles become tradeable
      * <p>
      * @param tradeIDs the Trade ID's as a String
      * @return {@link DelayedTradeClosureTransaction

@@ -17,12 +17,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
+@RequestMapping("/instruments")
 @RestController
 public class Api {
+
+
 
     private List<Instrument> instruments;
 
@@ -37,7 +42,7 @@ public class Api {
         try {
             instruments.addAll((Collection<? extends Instrument>) repository.findAll());
         }catch (Exception e){
-            System.out.println("failed to fill instrument collection on startup.. " +e.getMessage());
+            logger.error("failed to fill instrument collection on startup.. " ,e);
         }
     }
 
@@ -52,6 +57,7 @@ public class Api {
     @RequestMapping("/load")
     @ResponseBody
     String loadInstruments() {
+        logger.info("loadInstruments . . .");
         Context ctx = new Context(Config.URL, Config.TOKEN);
         AccountID accountId = Config.ACCOUNTID;
 
@@ -61,24 +67,24 @@ public class Api {
             AccountInstrumentsResponse resp = ctx.account.instruments(request);
             for(com.oanda.v20.primitives.Instrument instrument : resp.getInstruments()){
                 try {
-                    System.out.println(instrument.toString());
-                    System.out.println("\t" + instrument.getDisplayName());
-                    System.out.println("\tCommision = " + instrument.getCommission());
-                    System.out.println("\tPrecision = " + instrument.getDisplayPrecision());
-                    System.out.println("\tMarginRate = " + instrument.getMarginRate());
-                    System.out.println("\tMaximumOrderUnits = " + instrument.getMaximumOrderUnits());
-                    System.out.println("\tMaximumPositionSize = " + instrument.getMaximumPositionSize());
-                    System.out.println("\tMaximumTrailingStopDistance = " + instrument.getMaximumTrailingStopDistance());
-                    System.out.println("\tMinimumTradeSize = " + instrument.getMinimumTradeSize());
-                    System.out.println("\tMinimumTrailingStopDistance = " + instrument.getMinimumTrailingStopDistance());
-                    System.out.println("\tName = " + instrument.getName());
-                    System.out.println("\tPipLocation = " + instrument.getPipLocation());
-                    System.out.println("\tTradeUnitsPrecision = " + instrument.getTradeUnitsPrecision());
-                    System.out.println("\tType = " + instrument.getType());
+                    logger.info(instrument.toString());
+                    logger.info("\t" + instrument.getDisplayName());
+                    logger.info("\tCommision = " + instrument.getCommission());
+                    logger.info("\tPrecision = " + instrument.getDisplayPrecision());
+                    logger.info("\tMarginRate = " + instrument.getMarginRate());
+                    logger.info("\tMaximumOrderUnits = " + instrument.getMaximumOrderUnits());
+                    logger.info("\tMaximumPositionSize = " + instrument.getMaximumPositionSize());
+                    logger.info("\tMaximumTrailingStopDistance = " + instrument.getMaximumTrailingStopDistance());
+                    logger.info("\tMinimumTradeSize = " + instrument.getMinimumTradeSize());
+                    logger.info("\tMinimumTrailingStopDistance = " + instrument.getMinimumTrailingStopDistance());
+                    logger.info("\tName = " + instrument.getName());
+                    logger.info("\tPipLocation = " + instrument.getPipLocation());
+                    logger.info("\tTradeUnitsPrecision = " + instrument.getTradeUnitsPrecision());
+                    logger.info("\tType = " + instrument.getType());
                     repository.save(new Instrument(instrument));
                 }catch(Exception e)
                 {
-                    System.out.println("ERROR during Instrument toString : " + e.getMessage());
+                    logger.error("ERROR during Instrument toString : " , e);
                 }
             }
         } catch (Exception e1) {
@@ -87,18 +93,18 @@ public class Api {
         return "Instruments Loaded ..";
     }
 
-    @RequestMapping("/{name}")
-    public Instrument findByName(@PathVariable("name") String name) {
-        logger.info(String.format("Instrument.findByName(%s)", name));
-        Instrument a = instruments.stream().filter(it -> it.getName().equals(name)).findFirst().get();
-        logger.info(String.format("Instrument.findByName: %s", a));
-        return a;
+    @RequestMapping("/{id}")
+    public Instrument findById(@PathVariable("id")Long id) {
+        logger.info(String.format("Instrument.findById(%s)", id));
+        return repository.findById(id).get();
     }
 
     @RequestMapping("/")
     public List<Instrument> findAll() {
         logger.info("Instrument.findAll()");
         logger.info(String.format("Instrument.findAll: %s",instruments));
+        instruments.clear();
+        repository.findAll().forEach(instrument -> instruments.add(instrument));
         return instruments;
     }
 }

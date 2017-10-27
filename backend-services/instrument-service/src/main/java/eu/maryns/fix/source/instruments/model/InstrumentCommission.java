@@ -15,7 +15,7 @@ public class InstrumentCommission {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    private Long id;
 
     private String instrument;
     private BigDecimal commission;
