@@ -14,8 +14,13 @@
 
     <entry>mvn --projects :candle-service --also-make clean package && docker-compose build candle-service && docker-compose up -d candle-service</entry>
     <entry>mvn --projects :instrument-service --also-make clean package && docker-compose build instrument-service && docker-compose up -d instrument-service</entry>
-    <entry>mvn --projects :log-service --also-make clean package && docker-compose build log-service && docker-compose up -d log-service</entry>
+    <entry>mvn --projects :account-service --also-make clean package && docker-compose build account-service && docker-compose up -d account-service</entry>
     <entry>mvn --projects :price-service --also-make clean package && docker-compose build price-service && docker-compose up -d price-service</entry>
-    <entry>mvn --projects :stream-price-service --also-make clean package && docker-compose build stream-price-service && docker-compose up -d stream-price-service</entry>
+    <entry>mvn --projects :order-service --also-make clean package && docker-compose build order-service && docker-compose up -d order-service</entry>
+    <entry>mvn --projects :position-service --also-make clean package && docker-compose build position-service && docker-compose up -d position-service</entry>
+
+    <entry>mvn --projects :oanda-service --also-make clean package && docker-compose build oanda-service && docker-compose up -d oanda-service</entry>
+
+    <entry>mvn --projects :web-service --also-make clean package && docker-compose build web-service && docker-compose up -d web-service</entry>
 
 </entries>

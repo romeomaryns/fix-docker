@@ -1,0 +1,12 @@
+server:
+  port: 25005
+spring:
+  cloud:
+    config:
+      name: position-service
+    stream:
+      bindings:
+        output:
+          destination: positions
+          #contentType: text/plain
+          contentType: application/json

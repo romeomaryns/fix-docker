@@ -16,8 +16,9 @@
         <module>candle-service</module>
         <module>instrument-service</module>
         <module>price-service</module>
-        <module>stream-price-service</module>
-        <module>log-service</module>
+        <module>order-service</module>
+        <module>account-service</module>
+        <module>position-service</module>
     </modules>
 
     <dependencies>

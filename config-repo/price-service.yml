@@ -1,3 +1,5 @@
+server:
+  port: 25004
 spring:
   cloud:
     config:
@@ -5,9 +7,6 @@ spring:
     stream:
       bindings:
         output:
-          destination: log
+          destination: prices
           #contentType: text/plain
           contentType: application/json
-ribbon:
-  eureka:
-    enabled: true

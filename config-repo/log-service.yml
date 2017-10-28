@@ -1,9 +1,0 @@
-spring:
-  cloud:
-    config:
-      name: log-service
-    stream:
-      bindings:
-        input:
-          destination: log
-

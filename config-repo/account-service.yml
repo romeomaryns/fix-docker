@@ -1,0 +1,12 @@
+server:
+  port: 25003
+spring:
+  cloud:
+    config:
+      name: account-service
+    stream:
+      bindings:
+        output:
+          destination: accounts
+          #contentType: text/plain
+          contentType: application/json

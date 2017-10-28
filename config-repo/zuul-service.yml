@@ -6,12 +6,27 @@ spring:
       name: zuul-service
 zuul:
   routes:
-    price-service:
-      path: /prices/**
-      url: http://192.168.99.100/prices/
+    web-service:
+      path: /web/**
+      url: http://192.168.99.100:30000/
+    oanda-service:
+      path: /oanda/**
+      url: http://192.168.99.100:35000/
     instrument-service:
-      path: /instruments/**
-      url: http://192.168.99.100:25000/instruments/
+      path: /instrument/**
+      url: http://192.168.99.100:25000/instrument/
     candle-service:
-      path: /candles/**
-      url: http://192.168.99.100:25001/candles/
+      path: /candle/**
+      url: http://192.168.99.100:25001/candle/
+    order-service:
+      path: /order/**
+      url: http://192.168.99.100:25002/order/
+    account-service:
+      path: /account/**
+      url: http://192.168.99.100:25003/account/
+    price-service:
+      path: /price/**
+      url: http://192.168.99.100:25004/price/
+    position-service:
+      path: /position/**
+      url: http://192.168.99.100:25005/position/

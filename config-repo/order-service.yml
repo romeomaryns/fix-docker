@@ -1,0 +1,12 @@
+server:
+  port: 25002
+spring:
+  cloud:
+    config:
+      name: order-service
+    stream:
+      bindings:
+        output:
+          destination: orders
+          #contentType: text/plain
+          contentType: application/json

@@ -70,27 +70,6 @@ services:
       ports:
         - "9411:9411"
 
-  stream-price-service:
-     build: backend-services/stream-price-service
-     image: romeomaryns/stream-price-service
-     depends_on:
-               - config-service
-               - rabbitmq
-               - eureka-service
-  log-service:
-    build: backend-services/log-service
-    image: romeomaryns/log-service
-    depends_on:
-              - config-service
-              - rabbitmq
-              - eureka-service
-  price-service:
-    build: backend-services/price-service
-    image: romeomaryns/price-service
-    depends_on:
-              - config-service
-              - rabbitmq
-              - eureka-service
   instrument-service:
     build: backend-services/instrument-service
     image: romeomaryns/instrument-service
@@ -109,3 +88,61 @@ services:
               - eureka-service
     ports:
       - "25001:25001"
+  order-service:
+    build: backend-services/order-service
+    image: romeomaryns/order-service
+    depends_on:
+              - config-service
+              - rabbitmq
+              - eureka-service
+    ports:
+      - "25002:25002"
+  account-service:
+    build: backend-services/account-service
+    image: romeomaryns/account-service
+    depends_on:
+              - config-service
+              - rabbitmq
+              - eureka-service
+    ports:
+      - "25003:25003"
+  price-service:
+    build: backend-services/price-service
+    image: romeomaryns/price-service
+    depends_on:
+              - config-service
+              - rabbitmq
+              - eureka-service
+    ports:
+      - "25004:25004"
+  position-service:
+    build: backend-services/position-service
+    image: romeomaryns/position-service
+    depends_on:
+              - config-service
+              - rabbitmq
+              - eureka-service
+    ports:
+      - "25005:25005"
+
+  web-service:
+    build: frontend-services/web-service
+    image: romeomaryns/web-service
+    depends_on:
+              - config-service
+              - rabbitmq
+              - eureka-service
+              - zuul-service
+    ports:
+      - "30000:30000"
+
+  oanda-service:
+    build: functional-services/oanda-service
+    image: romeomaryns/oanda-service
+    depends_on:
+              - config-service
+              - rabbitmq
+              - eureka-service
+              - zuul-service
+    ports:
+      - "35000:35000"
