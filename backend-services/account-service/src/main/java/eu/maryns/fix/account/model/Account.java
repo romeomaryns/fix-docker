@@ -53,8 +53,11 @@ public class Account implements Serializable{
     private BigDecimal marginCallMarginUsed;
     private BigDecimal marginCallPercent;
     private String lastTransactionID;
+    @OneToMany
     private ArrayList<TradeSummary> trades;
+    @OneToMany
     private ArrayList<Position> positions;
+    @OneToMany
     private ArrayList<Order> orders;
 
 

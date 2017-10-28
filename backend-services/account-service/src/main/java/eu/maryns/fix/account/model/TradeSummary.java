@@ -20,6 +20,26 @@ public class TradeSummary implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long tradeSummaryId;
 
+
+    private String id;
+    private String instrument;
+    private BigDecimal price;
+    private Instant openTime;
+    private String state;
+    private BigDecimal initialUnits;
+    private BigDecimal currentUnits;
+    private BigDecimal realizedPL;
+    private BigDecimal unrealizedPL;
+    private BigDecimal averageClosePrice;
+    private ArrayList<String> closingTransactionIDs;
+    private BigDecimal financing;
+    private Instant closeTime;
+    @OneToOne(cascade = CascadeType.ALL)
+    private ClientExtensions clientExtensions;
+    private String takeProfitOrderID;
+    private String stopLossOrderID;
+    private String trailingStopLossOrderID;
+
     public TradeSummary() {
     }
 
@@ -48,22 +68,4 @@ public class TradeSummary implements Serializable {
         this.stopLossOrderID = other.getStopLossOrderID().toString();
         this.trailingStopLossOrderID = other.getTrailingStopLossOrderID().toString();
     }
-
-    private String id;
-    private String instrument;
-    private BigDecimal price;
-    private Instant openTime;
-    private String state;
-    private BigDecimal initialUnits;
-    private BigDecimal currentUnits;
-    private BigDecimal realizedPL;
-    private BigDecimal unrealizedPL;
-    private BigDecimal averageClosePrice;
-    private ArrayList<String> closingTransactionIDs;
-    private BigDecimal financing;
-    private Instant closeTime;
-    private ClientExtensions clientExtensions;
-    private String takeProfitOrderID;
-    private String stopLossOrderID;
-    private String trailingStopLossOrderID;
 }
