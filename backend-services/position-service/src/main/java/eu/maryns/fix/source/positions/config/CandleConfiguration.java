@@ -1,7 +1,6 @@
 package eu.maryns.fix.source.positions.config;
 
 
-import eu.maryns.fix.source.candles.model.Candle;
 import org.springframework.cloud.sleuth.sampler.AlwaysSampler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
