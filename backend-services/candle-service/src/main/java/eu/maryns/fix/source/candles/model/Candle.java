@@ -2,15 +2,12 @@ package eu.maryns.fix.source.candles.model;
 
 import com.oanda.v20.instrument.Candlestick;
 import lombok.Data;
-import lombok.Generated;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.Instant;
-import java.util.Date;
 
 @Data
 @Entity
