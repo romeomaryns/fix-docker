@@ -1,4 +1,4 @@
-package eu.maryns.fix.source.candles.model;
+package eu.maryns.fix.library.model.candle;
 
 
 public enum CandleStickGranularity {

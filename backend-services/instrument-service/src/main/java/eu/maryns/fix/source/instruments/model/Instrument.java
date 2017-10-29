@@ -20,7 +20,7 @@ public class Instrument implements Serializable{
     @NotNull
     private String name;
     @NotNull
-    private InstrumentType type;
+    private String type;
     @NotNull
     private String displayName;
     private Integer pipLocation;
@@ -56,7 +56,7 @@ public class Instrument implements Serializable{
 
     public Instrument(com.oanda.v20.primitives.Instrument other) {
         this.name = other.getName().toString();
-        this.type = InstrumentType.valueOf(other.getType().name());
+        this.type = other.getType().name();
         this.displayName = other.getDisplayName();
         if (other.getPipLocation() != null)
         {

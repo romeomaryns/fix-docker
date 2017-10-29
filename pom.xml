@@ -12,6 +12,7 @@
         <module>backend-services</module>
         <module>frontend-services</module>
         <module>functional-services</module>
+        <module>client-libraries</module>
     </modules>
 
     <parent>

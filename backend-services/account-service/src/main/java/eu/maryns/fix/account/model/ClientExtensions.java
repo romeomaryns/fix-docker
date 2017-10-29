@@ -19,12 +19,6 @@ public class ClientExtensions implements Serializable {
     private String tag;
     private String comment;
 
-
-    public ClientExtensions() {
-    }
-
-
-
     public ClientExtensions(com.oanda.v20.transaction.ClientExtensions other) {
         this.id = other.getId().toString();
         this.tag = other.getTag().toString();

@@ -1,15 +1,13 @@
 package eu.maryns.fix.account.model;
 
-import eu.maryns.fix.source.orders.model.Order;
-import eu.maryns.fix.source.positions.model.Position;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -53,18 +51,14 @@ public class Account implements Serializable{
     private BigDecimal marginCallMarginUsed;
     private BigDecimal marginCallPercent;
     private String lastTransactionID;
-    @OneToMany
-    private ArrayList<TradeSummary> trades;
-    @OneToMany
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "TradesIdAccounts")
+    private List<TradeSummary> trades;
+  /*  @OneToMany
     private ArrayList<Position> positions;
     @OneToMany
-    private ArrayList<Order> orders;
-
-
-    protected Account() {
-
-    }
-
+    private ArrayList<Order> orders;*/
 
     public Account(com.oanda.v20.account.Account other) {
         this.id = other.getId().toString();
@@ -124,7 +118,7 @@ public class Account implements Serializable{
                 this.trades.add(new TradeSummary(summary));
             }
         }
-        if (other.getPositions() != null)
+    /*    if (other.getPositions() != null)
         {
             this.positions = new ArrayList<Position>();
             for (com.oanda.v20.position.Position position: other.getPositions()) {
@@ -137,7 +131,7 @@ public class Account implements Serializable{
             for (com.oanda.v20.order.Order order: other.getOrders()) {
                // this.orders.add(new Order(order));
             }
-        }
+        }*/
     }
 
 }

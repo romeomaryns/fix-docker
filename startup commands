@@ -10,8 +10,6 @@
     <entry>mvn --projects :zipkin-service --also-make clean package && docker-compose build zipkin-service && docker-compose up -d zipkin-service</entry>
 
 
-    <entry>mvn --projects :candle-service,:instrument-service,:log-service,:price-service,:stream-price-service --also-make clean package && docker-compose up -d candle-service instrument-service log-service price-service stream-price-service</entry>
-
     <entry>mvn --projects :candle-service --also-make clean package && docker-compose build candle-service && docker-compose up -d candle-service</entry>
     <entry>mvn --projects :instrument-service --also-make clean package && docker-compose build instrument-service && docker-compose up -d instrument-service</entry>
     <entry>mvn --projects :account-service --also-make clean package && docker-compose build account-service && docker-compose up -d account-service</entry>
@@ -22,5 +20,7 @@
     <entry>mvn --projects :oanda-service --also-make clean package && docker-compose build oanda-service && docker-compose up -d oanda-service</entry>
 
     <entry>mvn --projects :web-service --also-make clean package && docker-compose build web-service && docker-compose up -d web-service</entry>
+
+    <entry>mvn --projects :client-libraries --also-make clean package </entry>
 
 </entries>

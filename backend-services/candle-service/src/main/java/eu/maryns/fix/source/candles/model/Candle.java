@@ -1,6 +1,7 @@
 package eu.maryns.fix.source.candles.model;
 
 import com.oanda.v20.instrument.Candlestick;
+import com.oanda.v20.instrument.CandlestickGranularity;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -43,7 +44,7 @@ public class Candle implements Serializable{
         this.time=null;
     }
 
-    public Candle(Candlestick other, String instrument,CandleStickGranularity granularity) throws ParseException {
+    public Candle(Candlestick other, String instrument, CandlestickGranularity granularity) throws ParseException {
         this.time = Instant.parse(other.getTime().toString());
         if (other.getBid() != null)
         {
