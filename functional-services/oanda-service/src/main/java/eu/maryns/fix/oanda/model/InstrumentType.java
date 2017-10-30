@@ -1,4 +1,4 @@
-package eu.maryns.fix.library.model.instrument;
+package eu.maryns.fix.oanda.model;
 
 public enum InstrumentType {
     CURRENCY,

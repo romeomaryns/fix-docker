@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk-alpine
+FROM openjdk:8-jre-alpine
 VOLUME /tmp
 ADD target/zipkin-service-0.1.0.jar app.jar
 ENV JAVA_OPTS=""

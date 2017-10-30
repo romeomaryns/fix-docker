@@ -1,4 +1,4 @@
-package eu.maryns.fix.library.model.instrument;
+package eu.maryns.fix.oanda.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

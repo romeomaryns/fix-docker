@@ -1,6 +1,5 @@
-package eu.maryns.fix.source.prices;
+package eu.maryns.fix.source.prices.model;
 
-import com.oanda.v20.pricing.PriceBucket;
 import lombok.Data;
 import lombok.Generated;
 
@@ -14,7 +13,7 @@ import java.util.ArrayList;
 public class Price implements Serializable{
 
     @Id
-    @Generated
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
 
     private String type;

@@ -13,7 +13,7 @@ zuul:
       path: /oanda/**
       url: http://192.168.99.100:35000/
     instrument-service:
-      path: /instrument/**
+      path: /instruments/**
       url: http://192.168.99.100:25000/
     candle-service:
       path: /candles/**
@@ -30,3 +30,21 @@ zuul:
     position-service:
       path: /positions/**
       url: http://192.168.99.100:25005/
+    kibana:
+      path: /kibana/**
+      url: http://192.168.99.100:5601/
+    rabbit:
+      path: /rabbit/**
+      url: http://192.168.99.100:15672/#/
+    elasticsearch:
+      path: /elasticsearch/**
+      url: http://192.168.99.100:9200/
+    zipkin:
+      path: /zipkin/**
+      url: http://192.168.99.100:9411/zipkin/
+    config:
+      path: /config/**
+      url: http://192.168.99.100:8888/zuul-service/default
+    eureka:
+      path: /eureka/**
+      url: http://192.168.99.100:8761/

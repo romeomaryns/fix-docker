@@ -1,6 +1,7 @@
 package eu.maryns.fix.source.instruments.model;
 
 
+import eu.maryns.fix.source.instruments.contract.InstrumentCommissionView;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -28,4 +29,12 @@ public class InstrumentCommission {
         this.unitsTraded = other.getUnitsTraded().bigDecimalValue();
         this.minimumCommission = other.getMinimumCommission().bigDecimalValue();
     }
+
+    public InstrumentCommission(InstrumentCommissionView commission) {
+        this.instrument = commission.getInstrument().toString();
+        this.commission = commission.getCommission();
+        this.unitsTraded = commission.getUnitsTraded();
+        this.minimumCommission = commission.getMinimumCommission();
+    }
+
 }

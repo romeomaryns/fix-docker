@@ -1,6 +1,6 @@
 package eu.maryns.fix.source.orders.model;
 
-//import eu.maryns.fix.account.model.ClientExtensions;
+//import com.oanda.v20.transaction.ClientExtensions;
 import lombok.Data;
 
 import javax.persistence.*;

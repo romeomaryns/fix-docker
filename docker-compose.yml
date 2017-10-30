@@ -2,17 +2,20 @@ version: '3'
 services:
   elasticsearch:
     image: elasticsearch
+    env_file: .env-elasticsearch
     restart: always
     ports:
       - "9200:9200"
-      - "9300:9300"
+ #     - "9300:9300"
   kibana:
     image: kibana
-    #env_file: .env-kibana
+    env_file: .env-kibana
     restart: always
     ports:
       - "5601:5601"
     depends_on:
+      - elasticsearch
+    links:
       - elasticsearch
   db:
     image: postgres

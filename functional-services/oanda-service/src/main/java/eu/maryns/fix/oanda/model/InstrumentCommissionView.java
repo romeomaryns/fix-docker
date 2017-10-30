@@ -1,4 +1,4 @@
-package eu.maryns.fix.library.model.instrument;
+package eu.maryns.fix.oanda.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -16,10 +16,16 @@ public class InstrumentCommissionView {
     private BigDecimal minimumCommission;
 
     public InstrumentCommissionView(InstrumentCommission commission) {
-        this.instrument = commission.getInstrument().toString();
-        this.commission = commission.getCommission().bigDecimalValue();
-        this.unitsTraded = commission.getUnitsTraded().bigDecimalValue();
-        this.minimumCommission = commission.getMinimumCommission().bigDecimalValue();
+        try {
+            this.instrument = commission.getInstrument().toString();
+            this.commission = commission.getCommission().bigDecimalValue();
+            this.unitsTraded = commission.getUnitsTraded().bigDecimalValue();
+            this.minimumCommission = commission.getMinimumCommission().bigDecimalValue();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
     public Long getId() {

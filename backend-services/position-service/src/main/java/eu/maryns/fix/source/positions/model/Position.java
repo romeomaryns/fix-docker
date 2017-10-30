@@ -6,18 +6,29 @@ import java.math.BigDecimal;
 import com.google.gson.annotations.SerializedName;
 
 import lombok.Data;
+import org.hibernate.engine.internal.Cascade;
+
 import javax.persistence.*;
 
 
 @Data
 @Entity
-@Table(uniqueConstraints={@UniqueConstraint(columnNames = {"id" })})
+@Table(uniqueConstraints={@UniqueConstraint(columnNames = {"positionId" })})
 public class Position implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long positionId;
 
+    private String instrument;
+    private BigDecimal pl;
+    private BigDecimal unrealizedPL;
+    private BigDecimal resettablePL;
+    private BigDecimal commission;
+    @OneToOne(cascade = CascadeType.ALL)
+    @SerializedName("long") private PositionSide longValue;
+    @OneToOne(cascade = CascadeType.ALL)
+    @SerializedName("short") private PositionSide shortValue;
 
     public Position() {
     }
@@ -38,11 +49,5 @@ public class Position implements Serializable {
         }
     }
 
-    private String instrument;
-    private BigDecimal pl;
-    private BigDecimal unrealizedPL;
-    private BigDecimal resettablePL;
-    private BigDecimal commission;
-    @SerializedName("long") private PositionSide longValue;
-    @SerializedName("short") private PositionSide shortValue;
+
 }

@@ -9,6 +9,7 @@
     <entry>mvn --projects :zuul-service --also-make clean package && docker-compose build zuul-service && docker-compose up -d zuul-service</entry>
     <entry>mvn --projects :zipkin-service --also-make clean package && docker-compose build zipkin-service && docker-compose up -d zipkin-service</entry>
 
+    <entry>mvn --projects :backend-services --also-make clean package && docker-compose build candle-service instrument-service account-service price-service order-service position-service && docker-compose up -d candle-service instrument-service account-service price-service order-service position-service</entry>
 
     <entry>mvn --projects :candle-service --also-make clean package && docker-compose build candle-service && docker-compose up -d candle-service</entry>
     <entry>mvn --projects :instrument-service --also-make clean package && docker-compose build instrument-service && docker-compose up -d instrument-service</entry>

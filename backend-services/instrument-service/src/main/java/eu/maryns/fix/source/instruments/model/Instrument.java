@@ -1,6 +1,6 @@
 package eu.maryns.fix.source.instruments.model;
 
-
+import eu.maryns.fix.source.instruments.contract.InstrumentView;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -79,6 +79,34 @@ public class Instrument implements Serializable{
         if (other.getCommission() != null)
         {
             this.commission = new InstrumentCommission(other.getCommission());
+        }
+    }
+
+    public Instrument(InstrumentView instrument) {
+        this.name = instrument.getName().toString();
+        this.type = instrument.getType().name();
+        this.displayName = instrument.getDisplayName();
+        if (instrument.getPipLocation() != null)
+        {
+            this.pipLocation = new Integer(instrument.getPipLocation());
+        }
+        if (instrument.getDisplayPrecision() != null)
+        {
+            this.displayPrecision = new Integer(instrument.getDisplayPrecision());
+        }
+        if (instrument.getTradeUnitsPrecision() != null)
+        {
+            this.tradeUnitsPrecision = new Integer(instrument.getTradeUnitsPrecision());
+        }
+        this.minimumTradeSize = instrument.getMinimumTradeSize();
+        this.maximumTrailingStopDistance = instrument.getMaximumTrailingStopDistance();
+        this.minimumTrailingStopDistance = instrument.getMinimumTrailingStopDistance();
+        this.maximumPositionSize = instrument.getMaximumPositionSize();
+        this.maximumOrderUnits = instrument.getMaximumOrderUnits();
+        this.marginRate = instrument.getMarginRate();
+        if (instrument.getCommission() != null)
+        {
+            this.commission = new InstrumentCommission(instrument.getCommission());
         }
     }
 }

@@ -1,9 +1,10 @@
-package eu.maryns.fix.source.prices;
+package eu.maryns.fix.source.prices.model;
 
 import lombok.Data;
-import lombok.Generated;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -12,7 +13,7 @@ import java.math.BigDecimal;
 @Entity
 public class Ask implements Serializable{
     @Id
-    @Generated
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
     private final BigDecimal price;
     private final Integer liquidity;
