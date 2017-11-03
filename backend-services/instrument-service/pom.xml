@@ -10,4 +10,22 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>instrument-service</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-neo4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.neo4j</groupId>
+            <artifactId>neo4j-ogm-core</artifactId>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- Only add if you're using the HTTP driver -->
+        <dependency>
+            <groupId>org.neo4j</groupId>
+            <artifactId>neo4j-ogm-http-driver</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+    </dependencies>
 </project>

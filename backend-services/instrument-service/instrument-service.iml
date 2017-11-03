@@ -11,10 +11,31 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: org.springframework.data:spring-data-neo4j:5.0.0.RC2" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-tx:5.0.0.RC3" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-context:5.0.0.RC3" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.0.0.RC3" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-expression:5.0.0.RC3" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.0.0.RC3" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-core:5.0.0.RC3" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-jcl:5.0.0.RC3" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:jcl-over-slf4j:1.7.25" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.data:spring-data-commons:2.0.0.RC2" level="project" />
+    <orderEntry type="library" name="Maven: org.neo4j:neo4j-ogm-bolt-driver:3.0.0-RC1" level="project" />
+    <orderEntry type="library" name="Maven: org.neo4j.driver:neo4j-java-driver:1.4.0" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.25" level="project" />
+    <orderEntry type="library" name="Maven: org.neo4j:neo4j-ogm-core:3.0.0-RC1" level="project" />
+    <orderEntry type="library" name="Maven: org.neo4j:neo4j-ogm-api:3.0.0-RC1" level="project" />
+    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.10" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.6" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.commons:commons-collections4:4.1" level="project" />
+    <orderEntry type="library" name="Maven: io.github.lukehutch:fast-classpath-scanner:2.0.18" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.neo4j:neo4j-ogm-http-driver:3.0.0-RC1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpclient:4.5.3" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore:4.4.6" level="project" />
+    <orderEntry type="library" name="Maven: commons-io:commons-io:2.4" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-sleuth-stream:2.0.0.M2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-sleuth-core:2.0.0.M2" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-context:5.0.0.RC3" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-expression:5.0.0.RC3" level="project" />
     <orderEntry type="library" name="Maven: org.aspectj:aspectjrt:1.8.10" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-stream:2.0.0.M1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-validation:2.0.0.M3" level="project" />
@@ -33,7 +54,6 @@
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-commons:2.0.0.M2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-crypto:5.0.0.M3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-aop:2.0.0.M3" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.0.0.RC3" level="project" />
     <orderEntry type="library" name="Maven: org.aspectj:aspectjweaver:1.8.10" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter-openfeign:2.0.0.M2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter:2.0.0.M2" level="project" />
@@ -45,13 +65,9 @@
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:2.0.0.M3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.0.0.M3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-web:5.0.0.RC3" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.0.0.RC3" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-core:5.0.0.RC3" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-jcl:5.0.0.RC3" level="project" />
     <orderEntry type="library" name="Maven: io.github.openfeign:feign-core:9.5.0" level="project" />
     <orderEntry type="library" name="Maven: org.jvnet:animal-sniffer-annotation:1.0" level="project" />
     <orderEntry type="library" name="Maven: io.github.openfeign:feign-slf4j:9.5.0" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.25" level="project" />
     <orderEntry type="library" name="Maven: io.github.openfeign:feign-hystrix:9.5.0" level="project" />
     <orderEntry type="library" name="Maven: com.netflix.archaius:archaius-core:0.7.5" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.google.code.findbugs:jsr305:3.0.1" level="project" />
@@ -91,13 +107,9 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.netflix.hystrix:hystrix-serialization:1.5.12" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.fasterxml.jackson.module:jackson-module-afterburner:2.9.0.pr4" level="project" />
     <orderEntry type="library" name="Maven: com.netflix.hystrix:hystrix-javanica:1.5.12" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.commons:commons-lang3:3.6" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.ow2.asm:asm:5.0.4" level="project" />
     <orderEntry type="library" name="Maven: com.oanda.v20:v20:3.0.19" level="project" />
     <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.8.1" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpclient:4.5.3" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore:4.4.6" level="project" />
-    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.10" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter-stream-rabbit:2.0.0.M1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-stream-binder-rabbit:2.0.0.M1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-stream-binder-rabbit-core:2.0.0.M1" level="project" />
@@ -175,9 +187,7 @@
     <orderEntry type="library" name="Maven: org.hibernate.common:hibernate-commons-annotations:5.0.1.Final" level="project" />
     <orderEntry type="library" name="Maven: javax.transaction:javax.transaction-api:1.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-jpa:2.0.0.RC2" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.data:spring-data-commons:2.0.0.RC2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-orm:5.0.0.RC3" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-tx:5.0.0.RC3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aspects:5.0.0.RC3" level="project" />
     <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.16.18" level="project" />
     <orderEntry type="library" name="Maven: net.logstash.logback:logstash-logback-encoder:4.9" level="project" />

@@ -35,6 +35,17 @@ services:
      options:
        max-size: "10m"
        max-file: "10"
+  neo4j:
+    image: neo4j
+    env_file:
+      - .env-neo4j
+    restart: always
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - /neo4j/data:/data
+      - /neo4j/logs:/logs
 
   config-service:
     build: basic-services/config-service

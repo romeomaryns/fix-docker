@@ -1,4 +1,4 @@
-package eu.maryns.fix.oanda.binding;
+package eu.maryns.fix.source.instruments.binding;
 
 import org.springframework.cloud.stream.annotation.Input;
 import org.springframework.cloud.stream.annotation.Output;

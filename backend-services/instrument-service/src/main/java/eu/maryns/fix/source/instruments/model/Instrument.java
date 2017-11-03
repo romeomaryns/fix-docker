@@ -1,27 +1,21 @@
 package eu.maryns.fix.source.instruments.model;
 
-import eu.maryns.fix.source.instruments.contract.InstrumentView;
-import lombok.Data;
+import org.neo4j.ogm.annotation.GeneratedValue;
+import org.neo4j.ogm.annotation.Id;
+import org.neo4j.ogm.annotation.NodeEntity;
+import org.springframework.stereotype.Indexed;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-@Data
-@Entity
-@Table(uniqueConstraints={@UniqueConstraint(columnNames = {"name" , "displayName"})})
+@NodeEntity
 public class Instrument implements Serializable{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private Long id;
-
-    @NotNull
     private String name;
-    @NotNull
     private String type;
-    @NotNull
     private String displayName;
     private Integer pipLocation;
     private Integer displayPrecision;
@@ -32,26 +26,10 @@ public class Instrument implements Serializable{
     private BigDecimal maximumPositionSize;
     private BigDecimal maximumOrderUnits;
     private BigDecimal marginRate;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="commision_fk")
     private InstrumentCommission commission;
 
 
     protected Instrument() {
-        this.id = null;
-        this.type=null;
-        this.displayName=null;
-        this.pipLocation=null;
-        this.displayPrecision=null;
-        this.tradeUnitsPrecision=null;
-        this.minimumTradeSize=null;
-        this.maximumTrailingStopDistance=null;
-        this.minimumTrailingStopDistance=null;
-        this.maximumPositionSize=null;
-        this.maximumOrderUnits=null;
-        this.marginRate=null;
-        this.commission=null;
     }
 
     public Instrument(com.oanda.v20.primitives.Instrument other) {
@@ -82,31 +60,115 @@ public class Instrument implements Serializable{
         }
     }
 
-    public Instrument(InstrumentView instrument) {
-        this.name = instrument.getName().toString();
-        this.type = instrument.getType().name();
-        this.displayName = instrument.getDisplayName();
-        if (instrument.getPipLocation() != null)
-        {
-            this.pipLocation = new Integer(instrument.getPipLocation());
-        }
-        if (instrument.getDisplayPrecision() != null)
-        {
-            this.displayPrecision = new Integer(instrument.getDisplayPrecision());
-        }
-        if (instrument.getTradeUnitsPrecision() != null)
-        {
-            this.tradeUnitsPrecision = new Integer(instrument.getTradeUnitsPrecision());
-        }
-        this.minimumTradeSize = instrument.getMinimumTradeSize();
-        this.maximumTrailingStopDistance = instrument.getMaximumTrailingStopDistance();
-        this.minimumTrailingStopDistance = instrument.getMinimumTrailingStopDistance();
-        this.maximumPositionSize = instrument.getMaximumPositionSize();
-        this.maximumOrderUnits = instrument.getMaximumOrderUnits();
-        this.marginRate = instrument.getMarginRate();
-        if (instrument.getCommission() != null)
-        {
-            this.commission = new InstrumentCommission(instrument.getCommission());
-        }
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
+
+    public Integer getPipLocation() {
+        return pipLocation;
+    }
+
+    public void setPipLocation(Integer pipLocation) {
+        this.pipLocation = pipLocation;
+    }
+
+    public Integer getDisplayPrecision() {
+        return displayPrecision;
+    }
+
+    public void setDisplayPrecision(Integer displayPrecision) {
+        this.displayPrecision = displayPrecision;
+    }
+
+    public Integer getTradeUnitsPrecision() {
+        return tradeUnitsPrecision;
+    }
+
+    public void setTradeUnitsPrecision(Integer tradeUnitsPrecision) {
+        this.tradeUnitsPrecision = tradeUnitsPrecision;
+    }
+
+    public BigDecimal getMinimumTradeSize() {
+        return minimumTradeSize;
+    }
+
+    public void setMinimumTradeSize(BigDecimal minimumTradeSize) {
+        this.minimumTradeSize = minimumTradeSize;
+    }
+
+    public BigDecimal getMaximumTrailingStopDistance() {
+        return maximumTrailingStopDistance;
+    }
+
+    public void setMaximumTrailingStopDistance(BigDecimal maximumTrailingStopDistance) {
+        this.maximumTrailingStopDistance = maximumTrailingStopDistance;
+    }
+
+    public BigDecimal getMinimumTrailingStopDistance() {
+        return minimumTrailingStopDistance;
+    }
+
+    public void setMinimumTrailingStopDistance(BigDecimal minimumTrailingStopDistance) {
+        this.minimumTrailingStopDistance = minimumTrailingStopDistance;
+    }
+
+    public BigDecimal getMaximumPositionSize() {
+        return maximumPositionSize;
+    }
+
+    public void setMaximumPositionSize(BigDecimal maximumPositionSize) {
+        this.maximumPositionSize = maximumPositionSize;
+    }
+
+    public BigDecimal getMaximumOrderUnits() {
+        return maximumOrderUnits;
+    }
+
+    public void setMaximumOrderUnits(BigDecimal maximumOrderUnits) {
+        this.maximumOrderUnits = maximumOrderUnits;
+    }
+
+    public BigDecimal getMarginRate() {
+        return marginRate;
+    }
+
+    public void setMarginRate(BigDecimal marginRate) {
+        this.marginRate = marginRate;
+    }
+
+    public InstrumentCommission getCommission() {
+        return commission;
+    }
+
+    public void setCommission(InstrumentCommission commission) {
+        this.commission = commission;
     }
 }

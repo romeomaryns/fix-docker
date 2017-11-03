@@ -1,8 +1,9 @@
 <entries>
     <entry>cd Documents/Sync/applicaties/fix-docker</entry>
-    <entry>docker-compose up -d db rabbitmq elasticsearch kibana</entry>
+    <entry>docker-compose up -d db rabbitmq elasticsearch kibana neo4j</entry>
 
     <entry>mvn --projects :config-service,:eureka-service,:zuul-service,:zipkin-service --also-make clean package && docker-compose up -d config-service eureka-service zuul-service zipkin-service</entry>
+
 
     <entry>mvn --projects :config-service --also-make clean package && docker-compose build config-service && docker-compose up -d config-service</entry>
     <entry>mvn --projects :eureka-service --also-make clean package && docker-compose build eureka-service && docker-compose up -d eureka-service</entry>
