@@ -10,7 +10,6 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.sleuth.Sampler;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories;
 import org.springframework.data.neo4j.transaction.Neo4jTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -40,8 +39,7 @@ public class Application {
     @Bean
     public org.neo4j.ogm.config.Configuration configuration() {
         ConfigurationSource properties = new ClasspathConfigurationSource("ogm.properties");
-        org.neo4j.ogm.config.Configuration configuration = new org.neo4j.ogm.config.Configuration.Builder(properties).build();
-        return configuration;
+        return new org.neo4j.ogm.config.Configuration.Builder(properties).build();
     }
 
     @Bean

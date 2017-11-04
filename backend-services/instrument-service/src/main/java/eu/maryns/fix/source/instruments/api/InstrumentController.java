@@ -8,16 +8,16 @@ import com.oanda.v20.account.AccountInstrumentsResponse;
 import eu.maryns.fix.source.instruments.binding.InstrumentChannels;
 import eu.maryns.fix.source.instruments.config.Config;
 import eu.maryns.fix.source.instruments.model.Instrument;
+import eu.maryns.fix.source.instruments.model.InstrumentCommission;
+import eu.maryns.fix.source.instruments.service.InstrumentCommissionService;
 import eu.maryns.fix.source.instruments.service.InstrumentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cloud.stream.annotation.EnableBinding;
-import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.SubscribableChannel;
-import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,6 +43,9 @@ public class InstrumentController {
     private InstrumentService instrumentService;
 
     @Autowired
+    private InstrumentCommissionService instrumentCommissionService;
+
+    @Autowired
     public InstrumentController(
             @Qualifier("instruments-to-save") MessageChannel outputInstruments
             ,@Qualifier("instruments-saved")SubscribableChannel inputInstruments) {
@@ -52,7 +55,7 @@ public class InstrumentController {
     }
 
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "load",method = RequestMethod.GET)
     public ModelAndView getInstruments() {
 
         try {
@@ -64,7 +67,14 @@ public class InstrumentController {
                 try {
                    // instruments.add(instrument);
                     //this.outputInstruments.send(MessageBuilder.withPayload(new Instrument(instrument)).build());
-                    instrumentService.save(new Instrument(instrument));
+                    Instrument instrumentObject = new Instrument(instrument);
+                    try {
+                        instrumentObject.setCommission(new InstrumentCommission(instrument.getCommission()));
+                    }catch(Exception e)
+                    {
+                        log.error("Error tijdens toevoegen commissie : " , e);
+                    }
+                    instrumentService.save(instrumentObject);
                 }
                 catch(Exception e)
                 {
@@ -82,6 +92,7 @@ public class InstrumentController {
     @RequestMapping(value = "clean" ,method = RequestMethod.GET)
     public String clean(){
         instrumentService.clean();
+        instrumentCommissionService.clean();
         return "Cleaned";
     }
 }

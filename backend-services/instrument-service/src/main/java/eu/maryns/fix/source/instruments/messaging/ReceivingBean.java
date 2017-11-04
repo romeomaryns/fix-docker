@@ -2,7 +2,6 @@ package eu.maryns.fix.source.instruments.messaging;
 
 
 import eu.maryns.fix.source.instruments.model.Instrument;
-import eu.maryns.fix.source.instruments.repository.InstrumentRepository;
 import eu.maryns.fix.source.instruments.service.InstrumentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -3,6 +3,7 @@ package eu.maryns.fix.source.instruments.model;
 
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
+import org.neo4j.ogm.annotation.Index;
 import org.neo4j.ogm.annotation.NodeEntity;
 
 import java.math.BigDecimal;
@@ -14,6 +15,7 @@ public class InstrumentCommission {
     @GeneratedValue
     private Long id;
 
+    @Index(unique = true)
     private String instrument;
     private BigDecimal commission;
     private BigDecimal unitsTraded;
@@ -22,10 +24,13 @@ public class InstrumentCommission {
     public InstrumentCommission(){}
 
     public InstrumentCommission(com.oanda.v20.primitives.InstrumentCommission other) {
-        this.instrument = other.getInstrument().toString();
-        this.commission = other.getCommission().bigDecimalValue();
-        this.unitsTraded = other.getUnitsTraded().bigDecimalValue();
-        this.minimumCommission = other.getMinimumCommission().bigDecimalValue();
+      if(null != other)
+      {
+          this.instrument = ((null == other.getInstrument()) ? "N/A" : other.getInstrument().toString());
+          this.commission = ((null == other.getCommission()) ? new BigDecimal(0) : other.getCommission().bigDecimalValue());
+          this.unitsTraded = ((null == other.getUnitsTraded()) ? new BigDecimal(0) : other.getUnitsTraded().bigDecimalValue());
+          this.minimumCommission = ((null == other.getMinimumCommission()) ? new BigDecimal(0) : other.getMinimumCommission().bigDecimalValue());
+      }
     }
 
     public Long getId() {
@@ -66,5 +71,16 @@ public class InstrumentCommission {
 
     public void setMinimumCommission(BigDecimal minimumCommission) {
         this.minimumCommission = minimumCommission;
+    }
+
+    @Override
+    public String toString() {
+        return "InstrumentCommission{" +
+                "id=" + id +
+                ", instrument='" + instrument + '\'' +
+                ", commission=" + commission +
+                ", unitsTraded=" + unitsTraded +
+                ", minimumCommission=" + minimumCommission +
+                '}';
     }
 }

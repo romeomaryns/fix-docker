@@ -1,10 +1,8 @@
 package eu.maryns.fix.source.instruments.model;
 
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.NodeEntity;
-import org.springframework.stereotype.Indexed;
+import org.neo4j.ogm.annotation.*;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -14,7 +12,11 @@ public class Instrument implements Serializable{
     @Id
     @GeneratedValue
     private Long id;
+    @NotNull
+    @Index(unique = true)
     private String name;
+    @NotNull
+    @Index
     private String type;
     private String displayName;
     private Integer pipLocation;
@@ -26,6 +28,7 @@ public class Instrument implements Serializable{
     private BigDecimal maximumPositionSize;
     private BigDecimal maximumOrderUnits;
     private BigDecimal marginRate;
+    @Relationship(type = "COMMISSION")
     private InstrumentCommission commission;
 
 
@@ -38,15 +41,15 @@ public class Instrument implements Serializable{
         this.displayName = other.getDisplayName();
         if (other.getPipLocation() != null)
         {
-            this.pipLocation = new Integer(other.getPipLocation());
+            this.pipLocation = other.getPipLocation();
         }
         if (other.getDisplayPrecision() != null)
         {
-            this.displayPrecision = new Integer(other.getDisplayPrecision());
+            this.displayPrecision = other.getDisplayPrecision();
         }
         if (other.getTradeUnitsPrecision() != null)
         {
-            this.tradeUnitsPrecision = new Integer(other.getTradeUnitsPrecision());
+            this.tradeUnitsPrecision = other.getTradeUnitsPrecision();
         }
         this.minimumTradeSize = other.getMinimumTradeSize().bigDecimalValue();
         this.maximumTrailingStopDistance = other.getMaximumTrailingStopDistance().bigDecimalValue();
@@ -170,5 +173,25 @@ public class Instrument implements Serializable{
 
     public void setCommission(InstrumentCommission commission) {
         this.commission = commission;
+    }
+
+    @Override
+    public String toString() {
+        String sb = "Instrument{" + "id=" + id +
+                ", name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", displayName='" + displayName + '\'' +
+                ", pipLocation=" + pipLocation +
+                ", displayPrecision=" + displayPrecision +
+                ", tradeUnitsPrecision=" + tradeUnitsPrecision +
+                ", minimumTradeSize=" + minimumTradeSize +
+                ", maximumTrailingStopDistance=" + maximumTrailingStopDistance +
+                ", minimumTrailingStopDistance=" + minimumTrailingStopDistance +
+                ", maximumPositionSize=" + maximumPositionSize +
+                ", maximumOrderUnits=" + maximumOrderUnits +
+                ", marginRate=" + marginRate +
+                ", commission=" + commission.toString() +
+                '}';
+        return sb;
     }
 }

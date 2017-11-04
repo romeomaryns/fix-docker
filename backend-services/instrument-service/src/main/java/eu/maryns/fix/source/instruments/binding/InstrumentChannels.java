@@ -8,7 +8,7 @@ import org.springframework.messaging.SubscribableChannel;
 public interface InstrumentChannels {
 
     @Input("instruments-saved")
-    public SubscribableChannel savedInstruments();
+    SubscribableChannel savedInstruments();
 
     @Output("instruments-to-save")
     MessageChannel instruments();
