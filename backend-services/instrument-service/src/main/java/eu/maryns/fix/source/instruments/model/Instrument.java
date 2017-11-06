@@ -32,7 +32,7 @@ public class Instrument implements Serializable{
     private InstrumentCommission commission;
 
 
-    protected Instrument() {
+    public Instrument() {
     }
 
     public Instrument(com.oanda.v20.primitives.Instrument other) {

@@ -14,4 +14,6 @@ public interface InstrumentRepository extends Neo4jRepository<Instrument, Long> 
     Iterable<Instrument> findAll();
 
     List<Instrument> findByDisplayName(String filterText);
+
+    List<Instrument> findByDisplayNameStartsWithIgnoreCase(String filterText);
 }

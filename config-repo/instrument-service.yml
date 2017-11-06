@@ -1,5 +1,11 @@
 server:
   port: 25000
+  use-forward-headers: true
+  tomcat:
+    internal-proxies: 
+  session:
+    cookie:
+      http-only: false
 spring:
   cloud:
     config:
